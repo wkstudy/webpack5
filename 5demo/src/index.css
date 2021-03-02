@@ -1,6 +1,12 @@
+@font-face{
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto/Roboto-Regular.ttf');
+}
+
 html,
 body {
   font-size: 30px;
   color: red;
   background: url('./img/bg.jpeg');
+  font-family: 'Roboto';
 }
