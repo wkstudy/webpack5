@@ -7,6 +7,7 @@ module.exports = {
   mode: 'development',
   entry: './src/index.js',
   devtool: 'inline-source-map', // 错误追踪
+  target: ['es2015'],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -14,11 +15,30 @@ module.exports = {
   devServer: {
     contentBase: './dist',
   },
+  resolve: {
+    fallback: {
+      "os": require.resolve("os-browserify/browser"),
+      "path": require.resolve("path-browserify") 
+    }
+  },
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.less$/i,
+        use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
