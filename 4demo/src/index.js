@@ -6,7 +6,7 @@ import pic from './img/person.jpeg';
 import tiny from './img/status.png'
 
 const concat = ([...rest]) => {
-  return rest.join('-')
+  return rest.join(',')
 }
 const { name , age } = a;
 const div = document.createElement('div');

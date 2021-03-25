@@ -5,12 +5,25 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
-  devtool: 'inline-source-map', // 错误追踪
+  entry: {
+    main: './src/index.js',
+    another: './src/another.js'
+  },
+  // devtool: 'inline-source-map', // 错误追踪
   target: "web",
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  stats: {
+    modules: true,
+  },
+  optimization: {
+    moduleIds: "hashed",
+    chunkIds: "named",
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   devServer: {
     contentBase: './dist',

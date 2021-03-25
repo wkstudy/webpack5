@@ -1,4 +1,6 @@
+import { hello } from './utils';
+
 export default {
-  name: 'a',
-  age: 19,
+  name: hello(),
+  age: 399,
 }
